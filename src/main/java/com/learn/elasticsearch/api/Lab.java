@@ -4,6 +4,12 @@ public class Lab {
 
 
 
+
+    public void revertMinusNCommit(){
+        System.out.println("revertMinusNCommit");
+    }
+
+
     public void revertCommit(){
         System.out.println("revertCommit");
     }
