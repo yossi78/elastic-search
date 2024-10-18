@@ -37,7 +37,7 @@ public class ElasticsearchConfig {
     private CredentialsProvider credentialsProvider() {
         CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         credentialsProvider.setCredentials(AuthScope.ANY,
-                new UsernamePasswordCredentials("elastic", "your_elastic_password"));
+                new UsernamePasswordCredentials("elastic", "changeme"));
         return credentialsProvider;
     }
 
