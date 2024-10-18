@@ -1,0 +1,13 @@
+spring:
+  elasticsearch:
+    client:
+      elasticsearch:
+        uris: http://localhost:9200
+        username: elastic
+        password: changeme
+    rest:
+      connection-timeout: 1000
+      read-timeout: 3000
+
+server:
+  port: 8080

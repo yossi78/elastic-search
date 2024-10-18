@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Persisted Users</title>
+    <script>
+        async function loadUsers() {
+            try {
+                const response = await fetch('/users');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const users = await response.json();
+                let userList = '<ul>';
+                users.forEach(user => {
+                    userList += `<li>${user.firstName} ${user.lastName} (Age: ${user.age})</li>`;
+                });
+                userList += '</ul>';
+                document.getElementById('userList').innerHTML = userList;
+            } catch (error) {
+                console.error('Error fetching users:', error);
+                document.getElementById('userList').innerHTML = '<p>Error loading users.</p>';
+            }
+        }
+
+        window.onload = loadUsers;
+    </script>
+</head>
+<body>
+<h1>Persisted Users</h1>
+<div id="userList">Loading users...</div>
+</body>
+</html>
