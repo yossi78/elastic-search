@@ -7,7 +7,7 @@ services:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - ELASTIC_PASSWORD=changeme
-      - xpack.security.enabled=true
+      - xpack.security.enabled=false
       - xpack.security.http.ssl.enabled=false # Disable SSL for simplicity
     ports:
       - "9200:9200"

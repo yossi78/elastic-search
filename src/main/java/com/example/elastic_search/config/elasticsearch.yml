@@ -15,7 +15,7 @@ path.data: /var/lib/elasticsearch
 path.logs: /var/log/elasticsearch
 
 # Enable Elasticsearch security features
-xpack.security.enabled: true
+xpack.security.enabled: false
 
 # Optional: Set the built-in users password (like elastic)
 # If using Elastic Cloud, you don't need this, as Cloud manages authentication
