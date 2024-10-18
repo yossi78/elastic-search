@@ -242,7 +242,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/users/{{userId}}",
+					"raw": "http://localhost:8080/api/users/ZbTGnpIBAKwx6g83NZPi",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -251,13 +251,7 @@
 					"path": [
 						"api",
 						"users",
-						"{{userId}}"
-					],
-					"variable": [
-						{
-							"key": "userId",
-							"value": "replace_with_user_id"
-						}
+						"ZbTGnpIBAKwx6g83NZPi"
 					]
 				}
 			},
@@ -300,7 +294,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/users/J9CTnpIBPeDiYTlfnMwU",
+					"raw": "http://localhost:8080/api/users/5DrLnpIB67iT9vzgmNMj",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -309,7 +303,7 @@
 					"path": [
 						"api",
 						"users",
-						"J9CTnpIBPeDiYTlfnMwU"
+						"5DrLnpIB67iT9vzgmNMj"
 					]
 				}
 			},
