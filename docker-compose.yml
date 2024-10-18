@@ -19,21 +19,6 @@ services:
       timeout: 10s
       retries: 10
 
-  app:
-    build: .
-    container_name: springboot-app
-    ports:
-      - "8080:8080"
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
-    environment:
-      - SPRING_ELASTICSEARCH_CLIENT_ELASTICSEARCH_URIS=http://elasticsearch:9200
-      - SPRING_ELASTICSEARCH_CLIENT_ELASTICSEARCH_USERNAME=elastic
-      - SPRING_ELASTICSEARCH_CLIENT_ELASTICSEARCH_PASSWORD=changeme
-    networks:
-      - es-network
-
 networks:
   es-network:
     driver: bridge
