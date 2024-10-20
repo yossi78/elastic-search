@@ -1,64 +1,46 @@
 package com.example.elastic_search.api;
-
 import com.example.elastic_search.model.User;
 import com.example.elastic_search.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-
     @Autowired
     private UserService userService;
 
-    // Create User
+
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        try {
-            User createdUser = userService.saveUser(user);
-            return ResponseEntity.ok(createdUser);
-        } catch (IOException e) {
-            return ResponseEntity.status(500).build();
-        }
+    public User createUser(@RequestBody User user) {
+        return userService.saveUser(user);
     }
 
-    // Get All Users
+
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        try {
-            List<User> users = userService.getAllUsers();
-            return ResponseEntity.ok(users);
-        } catch (IOException e) {
-            return ResponseEntity.status(500).build();
-        }
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 
-    // Get User by ID
+
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable String id) {
-        try {
-            User user = userService.getUserById(id);
-            if (user != null) {
-                return ResponseEntity.ok(user);
-            }
-            return ResponseEntity.notFound().build();
-        } catch (IOException e) {
-            return ResponseEntity.status(500).build();
-        }
+    public User getUserById(@PathVariable String id) {
+        return userService.getUserById(id).orElse(null);
     }
 
-    // Delete User by ID
+
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable String id, @RequestBody User updatedUser) {
+        Optional<User> userOpt = userService.updateUserById(id, updatedUser);
+        return userOpt.orElse(null);  // Return null if user not found
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
-        try {
-            userService.deleteUser(id);
-            return ResponseEntity.noContent().build();
-        } catch (IOException e) {
-            return ResponseEntity.status(500).build();
-        }
+    public void deleteUser(@PathVariable String id) {
+        userService.deleteUserById(id);
     }
 }
+

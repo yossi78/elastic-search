@@ -1,68 +1,59 @@
 package com.example.elastic_search.service;
-
-import co.elastic.clients.elasticsearch.indices.CreateIndexRequest;
-import co.elastic.clients.elasticsearch.indices.CreateIndexResponse;
-import co.elastic.clients.elasticsearch.indices.GetIndexRequest;
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import com.example.elastic_search.model.User;
 import com.example.elastic_search.repository.UserRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+
+
 
 @Service
 public class UserService {
-
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private ElasticsearchClient elasticsearchClient;
 
-    private static final String INDEX = "users";
-
-    public UserService() {
-    }
-
-    @PostConstruct
-    public void createIndexIfNotExists() {
-        try {
-            boolean exists = elasticsearchClient.indices().exists(e -> e.index(INDEX)).value();
-            if (!exists) {
-                CreateIndexRequest request = CreateIndexRequest.of(c -> c
-                        .index(INDEX)
-                        .mappings(m -> m
-                                .properties("age", p -> p.integer(i -> i))
-                                .properties("firstName", p -> p.text(t -> t))
-                                .properties("lastName", p -> p.text(t -> t))
-                        )
-                );
-                CreateIndexResponse createIndexResponse = elasticsearchClient.indices().create(request);
-                if (!createIndexResponse.acknowledged()) {
-                    throw new RuntimeException("Failed to create index: " + INDEX);
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("Error checking/creating index: " + INDEX, e);
-        }
-    }
-
-    public User saveUser(User user) throws IOException {
+    public User saveUser(User user) {
         return userRepository.save(user);
     }
 
-    public List<User> getAllUsers() throws IOException {
-        return userRepository.findAll();
+
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add);  // Convert Iterable to List
+        return users;
     }
 
-    public User getUserById(String id) throws IOException {
+    public Optional<User> getUserById(String id) {
         return userRepository.findById(id);
     }
 
-    public void deleteUser(String id) throws IOException {
+
+    public Optional<User> updateUserById(String id, User updatedUser) {
+        Optional<User> existingUserOpt = userRepository.findById(id);
+
+        if (existingUserOpt.isPresent()) {
+            User existingUser = existingUserOpt.get();
+
+            // Update the fields
+            existingUser.setFirstName(updatedUser.getFirstName());
+            existingUser.setLastName(updatedUser.getLastName());
+            existingUser.setAge(updatedUser.getAge());
+
+            // Save the updated user to the repository
+            userRepository.save(existingUser);
+            return Optional.of(existingUser);
+        } else {
+            return Optional.empty(); // User not found
+        }
+    }
+
+
+    public void deleteUserById(String id) {
         userRepository.deleteById(id);
     }
 }
