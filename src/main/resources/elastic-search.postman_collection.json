@@ -1,313 +1,323 @@
 {
 	"info": {
-		"_postman_id": "fd16badc-f410-462b-9e81-8df2d843d90d",
-		"name": "elastic-search",
+		"_postman_id": "9dc42273-2643-4010-b4b6-3d9ead925986",
+		"name": "Elastic-Search",
 		"description": "CRUD operations for User model with Elasticsearch",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "513031"
 	},
 	"item": [
 		{
-			"name": "Health Check",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/_cluster/health",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"_cluster",
-						"health"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get indexes",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/_cat/indices?v",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"_cat",
-						"indices"
-					],
-					"query": [
-						{
-							"key": "v",
-							"value": null
+			"name": "elastic servers",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/_cluster/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cluster",
+								"health"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get info",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get docs",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/users/_search?pretty=true",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"users",
-						"_search"
-					],
-					"query": [
-						{
-							"key": "pretty",
-							"value": "true"
+					},
+					"response": []
+				},
+				{
+					"name": "Get indexes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/_cat/indices?v",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"indices"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get doc by ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/users/_doc/6A2HnpIB7MOT6Elh82LD",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"users",
-						"_doc",
-						"6A2HnpIB7MOT6Elh82LD"
-					],
-					"query": [
-						{
-							"key": "Authorization",
-							"value": "Basic ZWxhc3RpYzpjaGFuZ2VtZQ==",
-							"disabled": true
+					},
+					"response": []
+				},
+				{
+					"name": "Get info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								""
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create User -1",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"age\": 30,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\"\n}"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create User -2",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"age\": 46,\n    \"firstName\": \"Yossi\",\n    \"lastName\": \"Tal\"\n}"
+				{
+					"name": "Get docs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/users/_search?pretty=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"users",
+								"_search"
+							],
+							"query": [
+								{
+									"key": "pretty",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"users"
-					]
+				{
+					"name": "Get doc by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/users/_doc/6A2HnpIB7MOT6Elh82LD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"users",
+								"_doc",
+								"6A2HnpIB7MOT6Elh82LD"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Basic ZWxhc3RpYzpjaGFuZ2VtZQ==",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Create User -3",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"age\": 48,\n    \"firstName\": \"David\",\n    \"lastName\": \"Cohen\"\n}"
+			"name": "service",
+			"item": [
+				{
+					"name": "Create User -1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 30,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get All Users",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get User By ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/users/ZbTGnpIBAKwx6g83NZPi",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"users",
-						"ZbTGnpIBAKwx6g83NZPi"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update User",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"age\": 99,\n    \"firstName\": \"Davidov\",\n    \"lastName\": \"Timoysis\"\n}"
+				{
+					"name": "Create User -2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 46,\n    \"firstName\": \"Yossi\",\n    \"lastName\": \"Tal\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/users/6A2HnpIB7MOT6Elh82LD",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"users",
-						"6A2HnpIB7MOT6Elh82LD"
-					]
+				{
+					"name": "Create User -3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 48,\n    \"firstName\": \"David\",\n    \"lastName\": \"Cohen\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/ZbTGnpIBAKwx6g83NZPi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"ZbTGnpIBAKwx6g83NZPi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 99,\n    \"firstName\": \"Davidov\",\n    \"lastName\": \"Timoysis\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/6A2HnpIB7MOT6Elh82LD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"6A2HnpIB7MOT6Elh82LD"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/5DrLnpIB67iT9vzgmNMj",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"5DrLnpIB67iT9vzgmNMj"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete User",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/users/5DrLnpIB67iT9vzgmNMj",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"users",
-						"5DrLnpIB67iT9vzgmNMj"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
