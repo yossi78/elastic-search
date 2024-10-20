@@ -7,7 +7,7 @@ mvn clean package -DskipTests
 
 #) Then create the containers as follow:
 docker-compose up -d
-
+#) run the service from intelliJ
 
 POSTMAN
 ------------------------------------------------------------------------------------------
