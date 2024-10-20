@@ -3,7 +3,6 @@ import com.example.elastic_search.model.User;
 import com.example.elastic_search.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

@@ -1,8 +1,4 @@
 package com.example.elastic_search.model;
-
-
-
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
