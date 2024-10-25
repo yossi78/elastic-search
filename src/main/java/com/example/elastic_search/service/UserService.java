@@ -6,6 +6,7 @@ import com.example.elastic_search.util.RepositoryUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 
@@ -53,7 +54,7 @@ public class UserService {
 
     public User updateUser(String userId, User updatedUser) {
         checkUserExistance(userId);
-        updatedUser.setId(String.valueOf(userId));
+        updatedUser.setId(userId);
         return userRepository.save(updatedUser);
     }
 

@@ -1,8 +1,8 @@
 package com.example.elastic_search.api;
+import com.example.elastic_search.exception.ResourceNotFoundException;
 import com.example.elastic_search.model.User;
 import com.example.elastic_search.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
