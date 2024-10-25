@@ -1,13 +1,12 @@
 package com.example.elastic_search.service;
-import com.example.elastic_search.exception.ResourceNotFoundException;
 import com.example.elastic_search.model.User;
 import com.example.elastic_search.repository.UserRepository;
 import com.example.elastic_search.util.RepositoryUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.data.elasticsearch.ResourceNotFoundException;
 
 
 @Service
