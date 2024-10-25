@@ -1,58 +1,75 @@
 package com.example.elastic_search.service;
+import com.example.elastic_search.exception.ResourceNotFoundException;
 import com.example.elastic_search.model.User;
 import com.example.elastic_search.repository.UserRepository;
+import com.example.elastic_search.util.RepositoryUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-
 
 
 @Service
+@Slf4j
 public class UserService {
+
+
+    private final UserRepository userRepository;
+
+
     @Autowired
-    private UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
 
-    public User saveUser(User user) {
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 
 
+    public User getUser(String userId) {
+        User user = checkUserExistance(userId);
+        return user;
+    }
+
     public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);  // Convert Iterable to List
+        List<User> users = RepositoryUtil.convertIterableToList(userRepository.findAll());
+        if(users==null){
+            log.error("The users have not been found");
+            throw new ResourceNotFoundException("The users have not been found");
+        }
+        log.info("Retrieved all users, total count: " + users.size());
         return users;
     }
 
-    public Optional<User> getUserById(String id) {
-        return userRepository.findById(id);
+
+
+    public void deleteUser(String userId) {
+        checkUserExistance(userId);
+        userRepository.deleteById(String.valueOf(userId));
     }
 
 
-    public Optional<User> updateUserById(String id, User updatedUser) {
-        Optional<User> existingUserOpt = userRepository.findById(id);
+    public User updateUser(String userId, User updatedUser) {
+        checkUserExistance(userId);
+        updatedUser.setId(String.valueOf(userId));
+        return userRepository.save(updatedUser);
+    }
 
-        if (existingUserOpt.isPresent()) {
-            User existingUser = existingUserOpt.get();
 
-            // Update the fields
-            existingUser.setFirstName(updatedUser.getFirstName());
-            existingUser.setLastName(updatedUser.getLastName());
-            existingUser.setAge(updatedUser.getAge());
-
-            // Save the updated user to the repository
-            userRepository.save(existingUser);
-            return Optional.of(existingUser);
-        } else {
-            return Optional.empty(); // User not found
+    private User checkUserExistance(String userId){
+        User user =  userRepository.findById(String.valueOf(userId)).orElse(null);
+        if(user==null){
+            log.error("The user has not been found , userId="+userId);
+            throw new ResourceNotFoundException("The user has not been found");
         }
+        log.info("Find user by id: " + userId);
+        return user;
     }
 
 
-    public void deleteUserById(String id) {
-        userRepository.deleteById(id);
-    }
+
+
+
 }

@@ -19,3 +19,31 @@ BROWSER
 #) Open the browser on the following url:
 http://localhost:9200/users/_search?pretty=true
 
+
+
+
+
+OPEN UI IN BROWSER
+-------------------------------------------------------------------------------------------------------------
+#) Open the browser in the following url:
+http://localhost:8080/
+
+
+
+--------------------------------------------------------------------------------------------------
+
+# HOW TO ADD NEW USER USING CURL
+
+curl --location "http://127.0.0.1:8080/api/users" --header "Content-Type: application/json" --data "{\"firstName\": \"Yossi\", \"lastName\": \"Tal\"}"
+
+curl --location "http://127.0.0.1:8080/api/users" --header "Content-Type: application/json" --data "{\"firstName\": \"Dani\", \"lastName\": \"Cohen\"}"
+
+--------------------------------------------------------------------------------------------------
+
+# HOW TO GET EXIST USER USING CURL
+
+curl --location "http://127.0.0.1:8080/api/users/3"
+
+
+
+--------------------------------------------------------------------------------------------------
